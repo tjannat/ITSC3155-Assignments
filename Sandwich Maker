@@ -1,0 +1,38 @@
+class BankAccount:
+
+    bank_title = "Bank of America"
+
+    def __init__(self, customer_name, current_balance, minimum_balance):
+        # Instance attributes
+        self.customer_name = customer_name
+        self.current_balance = current_balance
+        self.minimum_balance = minimum_balance
+
+    def deposit(self, amount):
+        self.current_balance += amount
+        print(f"${amount} deposited in {self.customer_name} account. New account balance: ${self.current_balance}\n")
+
+    def withdraw(self, amount):
+        if self.current_balance - amount < self.minimum_balance:
+            print(f"Withdrawal not allowed from {self.customer_name} account! Balance would fall below the minimum balance of ${self.minimum_balance}.\n")
+        else:
+            self.current_balance -= amount
+            print(f"${amount} withdrawn in {self.customer_name} account. New account balance: ${self.current_balance}\n")
+
+    def print_customer_information(self):
+        print(f"Bank Name: {BankAccount.bank_title}")
+        print(f"Customer Name: {self.customer_name}")
+        print(f"Current Balance: ${self.current_balance}")
+        print(f"Minimum Balance: ${self.minimum_balance}\n")
+
+account1 = BankAccount("Tasnim Jannat", 2000, 200)
+account2 = BankAccount("Zainab Rida", 1500, 150)
+
+account1.deposit(500)
+account1.withdraw(1500)
+
+account2.deposit(300)
+account2.withdraw(1700) 
+
+account1.print_customer_information()
+account2.print_customer_information()
